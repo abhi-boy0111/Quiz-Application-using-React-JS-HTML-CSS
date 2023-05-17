@@ -33,6 +33,7 @@ continue_btn.onclick = () => {
 let que_count = 0;
 let que_numb = 1;
 let counter;
+let timeValue = 15;
 
 let next_btn = quiz_box.querySelector(".next_btn");
 
@@ -43,6 +44,8 @@ next_btn.onclick = () => {
     que_numb++;
     showQuestion(que_count);
     queCounter(que_numb);
+    clearInterval(counter);
+    startTimer(timeValue);
   } else {
     console.log("Questions Completed");
   }
@@ -84,6 +87,8 @@ let tickIcon = '<div class="icon tick"><i class="fas fa-check"></i></div>';
 let crossIcon = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
 function optionSelected(answer) {
+  clearInterval(counter);
+  //startTimer(timeValue);
   let userAns = answer.textContent;
   let correctAns = questions[que_count].answer;
   let allOptions = option_list.children.length;
